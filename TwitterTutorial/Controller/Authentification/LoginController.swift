@@ -35,6 +35,7 @@ class LoginController: UIViewController {
         view.addSubview(logoImageView)
         logoImageView.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor)
         logoImageView.setDimensions(width: 150, height: 150)
+        
     }
     
 }
