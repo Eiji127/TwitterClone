@@ -28,7 +28,6 @@ class Utilities {
         view.addSubview(dividerView)
         dividerView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingLeft: 8, height: 0.75)
         
-        
         return view
         
     }

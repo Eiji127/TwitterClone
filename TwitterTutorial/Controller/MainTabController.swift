@@ -12,6 +12,18 @@ class MainTabController: UITabBarController {
     
     //MARK: - Properties
     
+    var user: User? {
+        
+        didSet{
+            
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedCotroller else { return }
+            
+            feed.user = user
+        }
+        
+    }
+    
     let actionButton: UIButton = {
         
         let button = UIButton(type: .system)
@@ -26,7 +38,11 @@ class MainTabController: UITabBarController {
     //MARK: -Selectors
     @objc func actionButtonTapped() {
         
-        print(123)
+        guard let user = user else { return }
+        let controller = UploadTweetController(user: user)
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
         
     }
     
@@ -41,6 +57,16 @@ class MainTabController: UITabBarController {
  
     
     // MARK: - API
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchUser(uid: uid) { user in
+            self.user = user
+            
+        }
+        
+    }
+    
+    
     func authentificateUserAndConfigureUI() {
         
         if Auth.auth().currentUser == nil {
@@ -58,6 +84,7 @@ class MainTabController: UITabBarController {
             print("DEBUG: User is logged in..")
             configureViewControllers()
             configureUI()
+            fetchUser()
         }
         
     }
@@ -88,7 +115,7 @@ class MainTabController: UITabBarController {
     
     func configureViewControllers() {
         
-        let feed = FeedCotroller()
+        let feed = FeedCotroller(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = templateNavigationController(image: UIImage(named: "home_unselected")!, rootViewController: feed)
         
         let explore = ExploreCotroller()
