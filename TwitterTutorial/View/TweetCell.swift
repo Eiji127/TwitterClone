@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TweetCellDelegate: class {
+    func handleProfileImageTapped()
+}
+
 class TweetCell: UICollectionViewCell {
     
     //MARK: - Properties
@@ -16,26 +20,29 @@ class TweetCell: UICollectionViewCell {
         }
     }
     
-    private let profileImageView: UIImageView = {
-        
+    weak var delegate: TweetCellDelegate?
+    
+    private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
         iv.backgroundColor = .twitterBlue
-        return iv
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTapped))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        
+        return iv
     }()
     
     private let captionLabel: UILabel = {
-        
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
         label.text = "Some test caption"
         return label
-        
     }()
     
     private lazy var commentButton: UIButton = {
@@ -145,15 +152,19 @@ class TweetCell: UICollectionViewCell {
         
         
     }
+    
+    @objc func handleProfileImageTapped() {
+        delegate?.handleProfileImageTapped()
+    }
     // MARK: - Helpers
     
     func configure() {
         guard let  tweet = tweet else { return }
-        captionLabel.text = tweet.caption
+        let viewModel = TweetViewModel(tweet: tweet)
         
-        print("DEBUG: Tweet user is \(tweet.user.username)")
-        profileImageView.sd_setImage(with: tweet.user.profileImageUrl)
-        infoLabel.text = tweet.user.username
-    }
+        captionLabel.text = tweet.caption
     
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        infoLabel.attributedText = viewModel.userInfoText
+    }
 }
