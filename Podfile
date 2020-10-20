@@ -6,11 +6,9 @@ target 'TwitterTutorial' do
   use_frameworks!
 
   # Pods for TwitterTutorial
-
  pod 'Firebase/Core'
  pod 'Firebase/Database'
  pod 'Firebase/Storage'
  pod 'Firebase/Auth'
  pod 'SDWebImage'
-
 end
