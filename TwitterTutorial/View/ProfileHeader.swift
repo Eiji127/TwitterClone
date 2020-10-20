@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: class {
+    func handleDismissal()
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -14,12 +18,13 @@ class ProfileHeader: UICollectionReusableView {
         didSet { configure() }
     }
     
+    weak var delegate: ProfileHeaderDelegate?
+    
     private let filterBar = ProfileFilterView()
     
     private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .twitterBlue
-        
         view.addSubview(backButton)
         backButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 42, paddingLeft: 16)
         backButton.setDimensions(width: 30, height: 30)
@@ -66,7 +71,7 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
-        label.text = "@venom"
+        label.text = "@hamburg"
         return label
     }()
     
@@ -151,7 +156,7 @@ class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Selectors
     @objc func handleFollowersTapped() {
-        
+        delegate?.handleDismissal()
     }
     
     @objc func handleFollowingTapped() {
