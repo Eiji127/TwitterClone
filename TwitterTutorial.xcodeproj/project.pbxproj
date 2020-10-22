@@ -29,6 +29,7 @@
 		9877ECB7253DFCD500A9A29B /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877ECB6253DFCD500A9A29B /* ProfileFilterCell.swift */; };
 		9877ECBA253E0B2E00A9A29B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877ECB9253E0B2E00A9A29B /* ProfileHeaderViewModel.swift */; };
 		9877ED03253ECD0500A9A29B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9877ECD6253ECC7000A9A29B /* GoogleService-Info.plist */; };
+		9877ED782541C12F00A9A29B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877ED772541C12F00A9A29B /* UserCell.swift */; };
 		98CE5B602532A78600B25FC9 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CE5B5F2532A78600B25FC9 /* UserService.swift */; };
 		98CE5B632532ABD700B25FC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CE5B622532ABD700B25FC9 /* User.swift */; };
 		98CE5B892532BBA400B25FC9 /* UploadTweetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CE5B882532BBA400B25FC9 /* UploadTweetController.swift */; };
@@ -67,6 +68,7 @@
 		9877ECB9253E0B2E00A9A29B /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		9877ECD6253ECC7000A9A29B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9877ED3F253ED16200A9A29B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9877ED772541C12F00A9A29B /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		98CE5B5F2532A78600B25FC9 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		98CE5B622532ABD700B25FC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		98CE5B882532BBA400B25FC9 /* UploadTweetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				98CE5B8B2532D26600B25FC9 /* CaptionTextView.swift */,
+				9877ED772541C12F00A9A29B /* UserCell.swift */,
 				98CE5B942534362900B25FC9 /* TweetCell.swift */,
 				9877ECAF253DD4D400A9A29B /* ProfileHeader.swift */,
 				9877ECB2253DFA1200A9A29B /* ProfileFilterView.swift */,
@@ -337,6 +340,7 @@
 				98CE5B8C2532D26600B25FC9 /* CaptionTextView.swift in Sources */,
 				9877ECB7253DFCD500A9A29B /* ProfileFilterCell.swift in Sources */,
 				9817BA8925320388003C7784 /* Contents.swift in Sources */,
+				9877ED782541C12F00A9A29B /* UserCell.swift in Sources */,
 				9817B9F5252EC055003C7784 /* AppDelegate.swift in Sources */,
 				9817BA5F2531424F003C7784 /* Utilities.swift in Sources */,
 				9817BA1C252EC4CF003C7784 /* ExploreController.swift in Sources */,

@@ -27,6 +27,12 @@ class  FeedCotroller: UICollectionViewController {
         fetchTweets()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.barStyle = .default
+    }
+    
     // MARK: - API
     
     func fetchTweets() {
@@ -71,7 +77,6 @@ extension FeedCotroller {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("DEBUG: Tweet count at time of collectionView function cell is \(tweets.count)")
         return tweets.count
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

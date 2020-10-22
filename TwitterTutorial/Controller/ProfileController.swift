@@ -16,8 +16,13 @@ class ProfileController: UICollectionViewController {
     // MARK: - Properties
     
     private let user: User
+
+    private var tweets = [Tweet]() {
+        didSet { collectionView.reloadData() }
+    }
     
     // MARK: - Lifecycle
+    
     init(user: User) {
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -30,6 +35,7 @@ class ProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        fetchTweets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,11 +44,18 @@ class ProfileController: UICollectionViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    // MARK: - APIs
+    
+    func fetchTweets() {
+        TweetService.shared.fetchTweets(forUser: user) { tweets in
+            self.tweets = tweets
+        }
+    }
+    
     
     // MARK: - Helpers
     
     func configureCollectionView() {
-        
         collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdetifier)
         
@@ -54,11 +67,12 @@ class ProfileController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return tweets.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
         return cell
     }
 }
@@ -70,7 +84,6 @@ extension ProfileController {
         header.user = user
         return header
     }
-    
 }
 
 
@@ -88,7 +101,7 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 // MARK: - ProfileHeaderDelegate
 
 extension ProfileController: ProfileHeaderDelegate {
-    func handleDismissal() {
-        print("DEBUG: Handle dismiss profile from ProfileController..")
+    @objc func handleDismissal() {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -9,9 +9,10 @@ import UIKit
 
 protocol ProfileHeaderDelegate: class {
     func handleDismissal()
+    func handleEditProfileFollow(_ header: ProfileHeader)
 }
 
-class ProfileHeader: UICollectionReusableView {
+class ProfileHeader: UICollectionReusableView{
     
     // MARK: - Properties
     var user: User? {
@@ -63,7 +64,6 @@ class ProfileHeader: UICollectionReusableView {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "ハンバーグ師匠"
         return label
     }()
     
@@ -71,7 +71,6 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
-        label.text = "@hamburg"
         return label
     }()
     
@@ -110,7 +109,7 @@ class ProfileHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         filterBar.delegate = self
         
         addSubview(containerView)
@@ -156,7 +155,7 @@ class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Selectors
     @objc func handleFollowersTapped() {
-        delegate?.handleDismissal()
+       
     }
     
     @objc func handleFollowingTapped() {
@@ -164,7 +163,7 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     @objc func handleDismissal() {
-        
+        delegate?.handleDismissal()
     }
     
     @objc func handleEditProfileFollow() {
@@ -182,6 +181,9 @@ class ProfileHeader: UICollectionReusableView {
         editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         followingLabel.attributedText = viewModel.followingString
         followersLabel.attributedText = viewModel.followersString
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = viewModel.usernameText
     }
 }
 
