@@ -3,7 +3,6 @@ import UIKit
 private let reuseIdentifier = "UserCell"
 
 class  ExploreCotroller: UITableViewController {
-    
     // MARK: - Properties
     private var users = [User]() {
         didSet {

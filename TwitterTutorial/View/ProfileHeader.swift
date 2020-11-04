@@ -105,6 +105,7 @@ class ProfileHeader: UICollectionReusableView{
         return label
     }()
     
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {

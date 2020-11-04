@@ -7,7 +7,7 @@
 
 import Firebase
 
-typealias DatabaseCompletin = ((Error?, DatabaseReference) -> Void)
+typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
 
 struct UserService {
     static let shared = UserService()
@@ -41,7 +41,7 @@ struct UserService {
         }
     }
     
-    func unfollowUser(uid: String, completion: @escaping(DatabaseCompletin)) {
+    func unfollowUser(uid: String, completion: @escaping(DatabaseCompletion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
         REF_USER_FOLLOWING.child(currentUid).child(uid).removeValue { (err, ref) in

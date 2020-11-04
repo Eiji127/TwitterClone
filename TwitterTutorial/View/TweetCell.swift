@@ -9,6 +9,7 @@ import UIKit
 
 protocol TweetCellDelegate: class {
     func handleProfileImageTapped(_ cell: TweetCell)
+    func handleReplyTapped(_ cell: TweetCell)
 }
 
 class TweetCell: UICollectionViewCell {
@@ -57,36 +58,30 @@ class TweetCell: UICollectionViewCell {
     }()
     
     private lazy var retweetButton: UIButton = {
-        
         let button = UIButton(type: .system)
         button.tintColor = .darkGray
         button.setDimensions(width: 20, height: 20)
         button.setImage(UIImage(named: "retweet"), for: .normal)
         button.addTarget(self, action: #selector(handleRetweetTapped), for: .touchUpInside)
         return button
-        
     }()
     
     private lazy var likeButton: UIButton = {
-        
         let button = UIButton(type: .system)
         button.tintColor = .darkGray
         button.setDimensions(width: 20, height: 20)
         button.setImage(UIImage(named: "like"), for: .normal)
         button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
         return button
-        
     }()
     
     private lazy var shareButton: UIButton = {
-        
         let button = UIButton(type: .system)
         button.tintColor = .darkGray
         button.setDimensions(width: 20, height: 20)
         button.setImage(UIImage(named: "share"), for: .normal)
         button.addTarget(self, action: #selector(handleShareTapped), for: .touchUpInside)
         return button
-        
     }()
     
     private let infoLabel = UILabel()
@@ -134,7 +129,7 @@ class TweetCell: UICollectionViewCell {
     
     // MARK: - Selectors
     @objc func handleCommentTapped() {
-        
+        delegate?.handleReplyTapped(self)
         
     }
     
