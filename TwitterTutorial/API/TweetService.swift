@@ -33,7 +33,6 @@ struct  TweetService {
     }
     
     func fetchTweets(completion: @escaping([Tweet]) -> Void) {
-        
         var tweets = [Tweet]()
         
         REF_TWEETS.observe(.childAdded) { snapshot in
@@ -66,9 +65,7 @@ struct  TweetService {
                     let tweet = Tweet(user: user, tweetID: tweetID, dictonary: dictionary)
                     tweets.append(tweet)
                     completion(tweets)
-                }
-                
-                
+                }  
             }
         }
     }
