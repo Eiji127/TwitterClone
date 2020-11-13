@@ -17,7 +17,6 @@ struct TweetViewModel {
     }
     
     var timestamp: String {
-        
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.second, .minute, .hour, .weekOfMonth]
         formatter.maximumUnitCount = 1
