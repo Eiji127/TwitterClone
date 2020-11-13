@@ -46,6 +46,7 @@
 		98FC612125597140004CE179 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC612025597140004CE179 /* Notification.swift */; };
 		98FC6124255A5436004CE179 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC6123255A5436004CE179 /* NotificationService.swift */; };
 		98FC6127255A7268004CE179 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC6126255A7268004CE179 /* NotificationCell.swift */; };
+		98FC612A255BE484004CE179 /* NotificationVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC6129255BE484004CE179 /* NotificationVIewModel.swift */; };
 		F2335AC274FF384D88DE43F1 /* Pods_TwitterTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD5B11AF31B20E8F4E7E970 /* Pods_TwitterTutorial.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		98FC612025597140004CE179 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		98FC6123255A5436004CE179 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		98FC6126255A7268004CE179 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		98FC6129255BE484004CE179 /* NotificationVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVIewModel.swift; sourceTree = "<group>"; };
 		CAD5B11AF31B20E8F4E7E970 /* Pods_TwitterTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 				9877ECB9253E0B2E00A9A29B /* ProfileHeaderViewModel.swift */,
 				98DF72AB2552DB0200A9CC78 /* UploadTweetViewModel.swift */,
 				98DF72B62555344500A9CC78 /* ActionSheetViewModel.swift */,
+				98FC6129255BE484004CE179 /* NotificationVIewModel.swift */,
 			);
 			path = " ViewModel";
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				98FC6124255A5436004CE179 /* NotificationService.swift in Sources */,
 				9877ECA9253D92D500A9A29B /* TweetViewModel.swift in Sources */,
 				9889D8BD2544039C0017EF57 /* TweetHeader.swift in Sources */,
+				98FC612A255BE484004CE179 /* NotificationVIewModel.swift in Sources */,
 				9817BA19252EC4A0003C7784 /* FeedController.swift in Sources */,
 				98DF72B72555344500A9CC78 /* ActionSheetViewModel.swift in Sources */,
 				98FC6127255A7268004CE179 /* NotificationCell.swift in Sources */,
