@@ -17,9 +17,7 @@ class TweetController: UICollectionViewController {
     private var tweet: Tweet
     private var actionSheetLauncher: ActionSheetLauncher!
     private var replies = [Tweet]() {
-        didSet {
-            collectionView.reloadData()
-        }
+        didSet { collectionView.reloadData() }
     }
     
     // MARK: - Lifecycle
@@ -39,8 +37,16 @@ class TweetController: UICollectionViewController {
         fetchReplies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.barStyle = .default
+    }
+    
     // MARK: - API
     func fetchReplies() {
+        print("DEBUG: Tweet ID is \(tweet.tweetID)")
+        
         TweetService.shared.fetchReplies(forTweet: tweet) { replies in
             self.replies = replies
         }

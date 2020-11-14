@@ -124,12 +124,18 @@ extension ProfileController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdetifier, for: indexPath) as! ProfileHeader
         header.delegate = self
         header.user = user
         return header
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = TweetController(tweet: currentDataSource[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
