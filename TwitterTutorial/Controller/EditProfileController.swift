@@ -21,8 +21,11 @@ class EditProfileController: UITableViewController {
     private lazy var headerView = EditProfileHeader(user: user)
     private let imagePicker = UIImagePickerController()
     weak var delegate: EditProfileControllerDelegate?
-    
     private var userInfoChanged = false
+    
+    private var imageChanged: Bool {
+        return selectedImage != nil
+    }
     
     private var selectedImage: UIImage? {
         didSet{ headerView.profileImageView.image = selectedImage }
@@ -54,12 +57,37 @@ class EditProfileController: UITableViewController {
     }
     
     @objc func handleDone() {
+        view.endEditing(true)
+        guard imageChanged || userInfoChanged else { return }
+        
         updateUserData()
     }
     // MARK: - API
     
     func updateUserData() {
-        UserService.shared.saveUserData(user: user) { (err, ref) in
+        
+        if imageChanged && !userInfoChanged {
+            updateProfileImage()
+        }
+        
+        if userInfoChanged && !imageChanged {
+            UserService.shared.saveUserData(user: user) { (err, ref) in
+                self.delegate?.controller(self, wantsToUpdate: self.user)
+            }
+        }
+        
+        if userInfoChanged && imageChanged {
+            UserService.shared.saveUserData(user: user) { (err, ref) in
+                self.updateProfileImage()
+            }
+        }
+    }
+    
+    func updateProfileImage() {
+        guard let image = selectedImage else { return }
+        
+        UserService.shared.updateProfileImage(image: image) { profileImageUrl in
+            self.user.profileImageUrl = profileImageUrl
             self.delegate?.controller(self, wantsToUpdate: self.user)
         }
     }
@@ -75,8 +103,6 @@ class EditProfileController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
-        
-        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func configureTableView() {
