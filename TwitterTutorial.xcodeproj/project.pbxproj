@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98178AB7256F4EBB00F0D6EA /* EditProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98178AB6256F4EBB00F0D6EA /* EditProfileFooter.swift */; };
 		9817B9F5252EC055003C7784 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9817B9F4252EC055003C7784 /* AppDelegate.swift */; };
 		9817B9F7252EC055003C7784 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9817B9F6252EC055003C7784 /* SceneDelegate.swift */; };
 		9817BA01252EC059003C7784 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9817B9FF252EC059003C7784 /* LaunchScreen.storyboard */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		0C38C23F8FA2E16FF2818079 /* Pods-TwitterTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterTutorial.release.xcconfig"; path = "Target Support Files/Pods-TwitterTutorial/Pods-TwitterTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		776EB9F31761D518A22A32CF /* Pods-TwitterTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterTutorial.debug.xcconfig"; path = "Target Support Files/Pods-TwitterTutorial/Pods-TwitterTutorial.debug.xcconfig"; sourceTree = "<group>"; };
+		98178AB6256F4EBB00F0D6EA /* EditProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileFooter.swift; sourceTree = "<group>"; };
 		9817B9F1252EC055003C7784 /* TwitterTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9817B9F4252EC055003C7784 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9817B9F6252EC055003C7784 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				9877ECB6253DFCD500A9A29B /* ProfileFilterCell.swift */,
 				98A182492565115700B44817 /* EditProfileHeader.swift */,
 				98A1825025651F9800B44817 /* EditProfileCell.swift */,
+				98178AB6256F4EBB00F0D6EA /* EditProfileFooter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				98DF72B72555344500A9CC78 /* ActionSheetViewModel.swift in Sources */,
 				98FC6127255A7268004CE179 /* NotificationCell.swift in Sources */,
 				98A1824E25651EE300B44817 /* EditProfileViewModel.swift in Sources */,
+				98178AB7256F4EBB00F0D6EA /* EditProfileFooter.swift in Sources */,
 				9817BA5A252F4A58003C7784 /* RegistrationController.swift in Sources */,
 				9817BA53252EF6D3003C7784 /* Extension.swift in Sources */,
 				98CE5B9225333BD400B25FC9 /* Tweet.swift in Sources */,

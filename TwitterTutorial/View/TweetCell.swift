@@ -58,39 +58,25 @@ class TweetCell: UICollectionViewCell {
     }()
     
     private lazy var commentButton: UIButton = {
-        
-        let button = UIButton(type: .system)
-        button.tintColor = .darkGray
-        button.setDimensions(width: 20, height: 20)
-        button.setImage(UIImage(named: "comment"), for: .normal)
+        let button = createButton(withImageName: "comment")
         button.addTarget(self, action: #selector(handleCommentTapped), for: .touchUpInside)
         return button
-        
     }()
     
     private lazy var retweetButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .darkGray
-        button.setDimensions(width: 20, height: 20)
-        button.setImage(UIImage(named: "retweet"), for: .normal)
+        let button = createButton(withImageName: "retweet")
         button.addTarget(self, action: #selector(handleRetweetTapped), for: .touchUpInside)
         return button
     }()
     
-    private lazy var likeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .darkGray
-        button.setDimensions(width: 20, height: 20)
-        button.setImage(UIImage(named: "like"), for: .normal)
+    private lazy var likesButton: UIButton = {
+        let button = createButton(withImageName: "like")
         button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var shareButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .darkGray
-        button.setDimensions(width: 20, height: 20)
-        button.setImage(UIImage(named: "share"), for: .normal)
+        let button = createButton(withImageName: "share")
         button.addTarget(self, action: #selector(handleShareTapped), for: .touchUpInside)
         return button
     }()
@@ -125,7 +111,7 @@ class TweetCell: UICollectionViewCell {
         
         infoLabel.font = UIFont.systemFont(ofSize: 14)
         
-        let actionStack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, shareButton])
+        let actionStack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likesButton, shareButton])
         actionStack.axis = .horizontal
         actionStack.spacing = 72
         
@@ -180,11 +166,20 @@ class TweetCell: UICollectionViewCell {
     
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         infoLabel.attributedText = viewModel.userInfoText
-        likeButton.tintColor = viewModel.likeButtonTintColor
-        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+        likesButton.tintColor = viewModel.likeButtonTintColor
+        likesButton.setImage(viewModel.likeButtonImage, for: .normal)
         
         replyLabel.isHidden = viewModel.shouldHideReplyLabel
         replyLabel.text = viewModel.replyText
+    }
+    
+    func createButton(withImageName imageName: String) -> UIButton{
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.tintColor = .darkGray
+        button.setDimensions(width: 20, height: 20)
+        return button
     }
     
     func configureMentionHandler() {
