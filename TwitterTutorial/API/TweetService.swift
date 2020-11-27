@@ -7,6 +7,7 @@
 
 import Firebase
 
+
 struct  TweetService {
     
     static let shared = TweetService()
@@ -53,20 +54,12 @@ struct  TweetService {
                 }
             }
         }
-        
-        REF_USER_TWEETS.child(currentUid).observe(.childAdded) { snapshot in
-            let tweetID = snapshot.key
-            
-            self.fetchTweet(withTweetID: tweetID) { tweet in
-                tweets.append(tweet)
-                completion(tweets)
-            }
-        }
     }
     
-    func fetchTweets(forUser user: User, completion: @escaping([Tweet]) -> Void) {
+    func fetchUserTweets(forUser user: User, completion: @escaping([Tweet]) -> Void) {
         var tweets = [Tweet]()
         REF_USER_TWEETS.child(user.uid).observe(.childAdded) { snapshot in
+            print(snapshot)
             let tweetID = snapshot.key
             
             self.fetchTweet(withTweetID: tweetID) { tweet in
@@ -128,7 +121,7 @@ struct  TweetService {
     }
     
     func fetchLikes(forUser user: User, completion: @escaping([Tweet]) -> Void) {
-        var tweets = [Tweet]()
+        var likes = [Tweet]()
         
         REF_USER_LIKES.child(user.uid).observe(.childAdded) { snapshot in
             let tweetID = snapshot.key
@@ -136,8 +129,8 @@ struct  TweetService {
                 var tweet = likedTweet
                 tweet.didLike = true
                 
-                tweets.append(tweet)
-                completion(tweets)
+                likes.append(tweet)
+                completion(likes)
             }
         }
     }

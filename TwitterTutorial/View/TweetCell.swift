@@ -141,7 +141,6 @@ class TweetCell: UICollectionViewCell {
     
     @objc func handleRetweetTapped() {
         
-        
     }
     
     @objc func handleLikeTapped() {
